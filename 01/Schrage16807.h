@@ -15,6 +15,8 @@
 #pragma region 头文件区
 #include "malloc.h"
 #include "time.h"
+#include "stdio.h"
+#include "stdlib.h"
 #pragma endregion
 
 #pragma region 宏定义区
@@ -60,4 +62,21 @@ int* RandN(int seed, int* range,int N);
  * @ 返回值: 种子
  */
 int Seed();
+
+/**
+ * @ 函数: RandNToDat(int seed, int* range, int N)
+ *
+ * @ 功能: 产生多个随机数,并print到文件里
+ *
+ * @ param{seed}: 种子
+ *
+ * @ param{range}: 范围
+ *
+ * @ param{N}: 总个数
+ *
+ * @ param{name}: 输出文件名
+ *
+ * @ 返回值: 成功1，失败0
+ */
+int RandNToDat(int seed, int* range, int N,char* name);
 #pragma endregion

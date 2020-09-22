@@ -1,6 +1,4 @@
 #include "Schrage16807.h"
-#include "stdio.h"
-#include <stdlib.h>
 
 void main() {
 	//≤‚ ‘”√
@@ -17,4 +15,7 @@ void main() {
 		printf("%d ", randOut[i]);
 	}
 	printf("\n");
+	char name[30];
+	scanf("%s", &name);
+	RandNToDat(seed, range, N, name);
 }
