@@ -17,5 +17,4 @@ void main() {
 		printf("%d ", randOut[i]);
 	}
 	printf("\n");
-	system("pause");
 }
