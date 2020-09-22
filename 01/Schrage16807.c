@@ -63,7 +63,7 @@ int Seed()
 	time(&rawtime);
 	//转化为当前时区时间
 	info = localtime(&rawtime);
-	info->tm_year -= 100;
+	info->tm_year = info->tm_year % 100;
 	//计算种子
 	seed = info->tm_year + 70 * (info->tm_min + 12 * (info->tm_mday\
 		+ 31 * (info->tm_hour + 23 * (info->tm_min + 59 * (info->tm_sec)))));
