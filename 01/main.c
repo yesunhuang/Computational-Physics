@@ -20,4 +20,7 @@ void main() {
 	char name[30];
 	scanf("%s", &name);
 	RandNToDat(seed, range, N, name);
+	int k=0;
+	scanf("%d",&k);
+	printf("%.9e",ReadAndCalAvg(name,k,N));
 }

@@ -93,7 +93,23 @@ int RandNToDat(int seed, double* range, int N, char* name)
 
 double ReadAndCalAvg(char* name, int k, int N)
 {
-	return 0.0;
+	FILE* fp;
+	if ((fp = fopen(name, "r")) == NULL)
+	{
+		return 0;
+		exit(0);
+	}
+	char label1[20],label2[20];
+	//∂¡»°±Í«©
+	fscanf("%s %s",&label1,&label2);
+	int i=0; double x=0,y=0,avrg=0;
+	//¿€º”
+	for ( i = 0; i < N; i++)
+	{
+		fscanf("%lf %lf",&x,&y);
+		avrg+=pow(x,(double)k);
+	}
+	return avrg/N;
 }
 
 double ReadAndCalCorr(char* name, int l, int N)
