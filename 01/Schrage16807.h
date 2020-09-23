@@ -16,6 +16,7 @@
 #include "malloc.h"
 #include "time.h"
 #include "stdio.h"
+#include "string.h"
 #include "stdlib.h"
 #include "math.h"
 #pragma endregion
@@ -111,7 +112,18 @@ double ReadAndCalAvg(char* name, int k,int N);
  */
 double ReadAndCalCorr(char* name, int l, int N);
 
-
+/**
+ * @ 函数: RecurrentIndex(int maxIndex, int rawIndex)
+ *
+ * @ 功能: 计算循环数组索引
+ *
+ * @ param{maxIndex}:最大索引
+ *
+ * @ param{rawIndex}:原始索引 
+ *
+ * @ 返回值: 合法索引。
+ */
+int RecurrentIndex(int length, int rawIndex);
 
 
 #pragma endregion

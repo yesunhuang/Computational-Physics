@@ -109,12 +109,47 @@ double ReadAndCalAvg(char* name, int k, int N)
 		fscanf(fp,"%lf %lf",&x,&y);
 		avrg+=pow(x,(double)k);
 	}
+	fclose(fp);
 	return avrg/N;
 }
 
 double ReadAndCalCorr(char* name, int l, int N)
 {
-	return 0.0;
+	FILE* fp;
+	if ((fp = fopen(name, "r")) == NULL)
+	{
+		return 0;
+		exit(0);
+	}
+	char label1[20], label2[20];
+	//读取标签
+	fscanf(fp, "%s %s", &label1, &label2);
+	double avgX1=0, avgX2=0, avgXX=0,x=0,y=0;
+	//创建缓存数组
+	double* randArray = (double*)malloc(l * sizeof(double));
+	//预读入
+	int i= 0;
+	for ( i = 0; i < l; i++)
+	{
+		fscanf(fp, "%lf %lf", &x, &y);
+		randArray[i] = x;
+		avgX1 += x; avgX2 += pow(x, 2);
+	}
+	//计算avg x_n*x_n-l
+	for ( i = l; i < N; i++)
+	{
+		fscanf(fp, "%lf %lf", &x, &y);
+		avgX1 += x; avgX2 += pow(x, 2);
+		avgXX += x * randArray[RecurrentIndex(l, i - l)];
+		randArray[RecurrentIndex(l, i)] = x;
+	}
+	return (avgXX - pow(avgX1, 2) / N) / (avgX2 - pow(avgX1, 2) / N);
+}
+
+int RecurrentIndex(int length, int rawIndex)
+{
+	//简单的几何学
+	return rawIndex >= 0 ? rawIndex % (length) : length + (rawIndex % length);
 }
 
 
