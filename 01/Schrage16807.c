@@ -20,21 +20,11 @@ int Shrage(int seed)
 	}
 }
 
-int* RandN(int seed, int* range, int N)
+double* RandN(int seed, double* range, int N)
 {
-	unsigned int M = M_16807,lRange,rRange;
-	M += 1;
+	double M = M_16807, lRange;
 	//防溢出处理
-	if (range[0]<=0)
-	{
-		lRange = -range[0];
-		rRange = range[1];
-		lRange =lRange + rRange +1;
-	}
-	else
-	{
-		lRange = range[1] - range[0] + 1;
-	}
+	lRange = range[1] - range[0];
 	//迭代量
 	int z = seed;
 	if ((lRange)>(M)||((range[1] - range[0])<=0))
@@ -42,14 +32,14 @@ int* RandN(int seed, int* range, int N)
 		return NULL;
 	}
 	//生成动态数组
-	int* randArray = (int*)malloc(N * sizeof(int));
+	double* randArray = (double*)malloc(N * sizeof(double));
 	//比例因子
-	unsigned int scale = M/lRange;
+	double scale = M/lRange;
 	int i = 0;
 	for ( i = 0; i < N; i++)
 	{
 		z = Shrage(z);
-		randArray[i] = range[0]+ (int)(z/scale);
+		randArray[i] = range[0]+ ((double)z/scale);
 	}
 	return randArray;
 }
@@ -70,7 +60,7 @@ int Seed()
 	return seed;
 }
 
-int RandNToDat(int seed, int* range, int N, char* name)
+int RandNToDat(int seed, double* range, int N, char* name)
 {
 	FILE* fp;
 	if ((fp = fopen(name, "w")) == NULL)
@@ -79,19 +69,9 @@ int RandNToDat(int seed, int* range, int N, char* name)
 		exit(0);
 	}
 	fprintf(fp, "x\ty\t\n");
-	unsigned int M = M_16807, lRange, rRange;
-	M += 1;
+	double M = M_16807, lRange;
 	//防溢出处理
-	if (range[0] <= 0)
-	{
-		lRange = -range[0];
-		rRange = range[1];
-		lRange = lRange + rRange + 1;
-	}
-	else
-	{
-		lRange = range[1] - range[0] + 1;
-	}
+	lRange = range[1] - range[0];
 	//迭代量
 	int z = seed;
 	if ((lRange) > (M) || ((range[1] - range[0]) <= 0))
@@ -99,15 +79,27 @@ int RandNToDat(int seed, int* range, int N, char* name)
 		return 0;
 	}
 	//比例因子
-	unsigned int scale = M / lRange;
+	double scale = M / lRange;
 	int i = 0;
 	for (i = 0; i < N; i++)
 	{
-		fprintf(fp,"%d\t", range[0] + (int)(z / scale));
+		fprintf(fp,"%.9e\t", range[0] + ((double)z / scale));
 		z = Shrage(z);
-		fprintf(fp, "%d\n", range[0] + (int)(z / scale));
+		fprintf(fp, "%.9e\n", range[0] + ((double)z / scale));
 	}
 	fclose(fp);
 	return 1;
 }
+
+double ReadAndCalAvg(char* name, int k, int N)
+{
+	return 0.0;
+}
+
+double ReadAndCalCorr(char* name, int l, int N)
+{
+	return 0.0;
+}
+
+
 

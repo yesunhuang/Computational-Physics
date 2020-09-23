@@ -40,7 +40,7 @@
 int Shrage(int seed);
 
 /**
- * @ 函数: int* RandN(int seed, int* range)
+ * @ 函数: double* RandN(int seed, int* range)
  *
  * @ 功能: 产生多个随机数
  *
@@ -52,7 +52,7 @@ int Shrage(int seed);
  *
  * @ 返回值: 包含多个随机数的数组,所以记得free啊
  */
-int* RandN(int seed, int* range,int N);
+double* RandN(int seed, double* range,int N);
 
 /**
  * @ 函数: int Seed()
@@ -78,5 +78,39 @@ int Seed();
  *
  * @ 返回值: 成功1，失败0
  */
-int RandNToDat(int seed, int* range, int N,char* name);
+int RandNToDat(int seed, double* range, int N,char* name);
+
+/**
+ * @ 函数: ReadAndCalAvg(char* name, int k)
+ *
+ * @ 功能: 从dat中读入数据并计算<x^k>
+ *
+ * @ param{name}:文件名
+ *
+ * @ param{k}: 阶次
+ *
+ * @ param{N}: 总个数
+ *
+ * @ 返回值: 计算值
+ */
+double ReadAndCalAvg(char* name, int k,int N);
+
+/**
+ * @ 函数: ReadAndCalCorr(char* name,int k,int N)
+ *
+ * @ 功能: 从dat中读入数据并计算C(l)
+ *
+ * @ param{name}:文件名
+ *
+ * @ param{l}: 阶次
+ *
+ * @ param{N}: 总个数
+ *
+ * @ 返回值: 计算值
+ */
+double ReadAndCalCorr(char* name, int l, int N);
+
+
+
+
 #pragma endregion
