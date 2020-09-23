@@ -101,12 +101,12 @@ double ReadAndCalAvg(char* name, int k, int N)
 	}
 	char label1[20],label2[20];
 	//∂¡»°±Í«©
-	fscanf("%s %s",&label1,&label2);
+	fscanf(fp,"%s %s",&label1,&label2);
 	int i=0; double x=0,y=0,avrg=0;
 	//¿€º”
 	for ( i = 0; i < N; i++)
 	{
-		fscanf("%lf %lf",&x,&y);
+		fscanf(fp,"%lf %lf",&x,&y);
 		avrg+=pow(x,(double)k);
 	}
 	return avrg/N;
