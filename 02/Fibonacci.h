@@ -19,8 +19,6 @@
 #pragma region 宏定义区
  //以下为各类常数及操作符
 #define OTimes +
-#define min(a,b) (((a)<(b))?(a):(b))
-#define max(a,b) (((a)>(b))?(a):(b))
 #pragma endregion
 
 #pragma region 函数声明

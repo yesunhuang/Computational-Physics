@@ -129,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Fibonacci.c" />
+    <ClCompile Include="..\main.c" />
     <ClCompile Include="..\Schrage16807.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

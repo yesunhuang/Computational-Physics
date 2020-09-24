@@ -3,7 +3,7 @@
 int Fibonacci(int* cache, int n, int q, int p)
 {
 	//防溢出处理
-    unsigned long long I_n, I_nq, I_np, m=M_16807;
+    long long I_n, I_nq, I_np, m=M_16807;
 	I_np = cache[RecurrentIndex(max(p, q), n - p)];
 	I_nq = cache[RecurrentIndex(max(p, q), n - q)];
 	//计算I_n
@@ -56,5 +56,29 @@ int FibRandNToDat(int seed, double* range, int N, char* name, int p, int q)
 
 double ReadAndCalScale(char* name, int N)
 {
-	return 0.0;
+	FILE* fp;
+	if ((fp = fopen(name, "r")) == NULL)
+	{
+		return 0;
+		exit(0);
+	}
+	char label1[20], label2[20];
+	//读取标签
+	fscanf(fp, "%s %s", &label1, &label2);
+	int i = 0,count=0; double x = 0, y = 0, z=0;
+	//读取与记录点
+	//初始读入
+	fscanf(fp, "%lf %lf", &x, &y);
+	for (i = 1; i < N; i++)
+	{
+		fscanf(fp, "%lf %lf", &y, &z);
+		//记录符合条件的点
+		if ((y>z) && (z>x))
+		{
+			count++;
+		}
+		x = y;
+	}
+	fclose(fp);
+	return ((double)count / (double)(N-2));
 }
