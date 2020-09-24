@@ -22,11 +22,12 @@
 #pragma endregion
 
 #pragma region 宏定义区
-//以下为各类常数
+//以下为各类常数及操作符
 #define M_16807 2147483647 
 #define A_16807 16807	
 #define R_16807 2836
 #define Q_16807 127773
+#define OTimes +
 #pragma endregion
 
 #pragma region 函数声明
