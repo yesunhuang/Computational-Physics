@@ -143,6 +143,7 @@ double ReadAndCalCorr(char* name, int l, int N)
 		avgXX += x * randArray[RecurrentIndex(l, i - l)];
 		randArray[RecurrentIndex(l, i)] = x;
 	}
+	free(randArray);
 	return (avgXX - pow(avgX1, 2) / N) / (avgX2 - pow(avgX1, 2) / N);
 }
 

@@ -18,9 +18,15 @@
     <ClInclude Include="..\Schrage16807.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\Fibonacci.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Schrage16807.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Fibonacci.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
