@@ -49,7 +49,7 @@ int main()
 	fprintf(fp, "q\tp\tscale\n");
 	double  bias_min = 100,scale,scale_s=1.0/6.0;
 	int q_min = 0, p_min = 0;
-	N = 1000;
+	N = 10000;
 	for ( q = 1; q < 101; q++)
 	{
 		for ( p = 1; p < 101; p++)
