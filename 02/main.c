@@ -5,6 +5,7 @@ int main()
 	int seed = Seed();
 	int p = 0, q = 0, N = 0,i=0;
 	double range[2] = {0,1};
+	
 	////debug≤‚ ‘øÈ1
 	//p q N
 	//scanf("%d%d%d", &p, &q, &N);
@@ -88,5 +89,7 @@ int main()
 	fprintf(fp, "seed=%d\tq=%d\tp=%d", seed,q_min,p_min);
 	fclose(fp);
 	printf("Fibonacci test done!\n");
+
+	FibRandNToDat(seed, range, 10000, "plot.dat", p_min, q_min);
 	return 1;
 }
