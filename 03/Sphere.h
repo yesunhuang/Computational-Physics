@@ -29,7 +29,7 @@
  *
  * @ 功能:生成球面随机数 
  *
- * @ param{seed}:种子数组,[seed1,seed2]
+ * @ param{seed}:种子
  *
  * @ param{rho}:半径
  *
@@ -46,7 +46,7 @@ int SRandNToDat(int seed, double rho, int N, char* name);
  *
  * @ 功能:用一种比较蠢的方法生成球面随机数
  *
- * @ param{seed}:种子数组[seed1,seed2,seed3]
+ * @ param{seed}:种子
  *
  * @ param{rho}:半径
  *
