@@ -18,7 +18,7 @@ int RFunToDat(int seed, char* name, int N)
 	{
 		xi = (double)z / m;
 		x = sin(M_PI * (xi - 0.5));
-		fprintf(fp,"%.9e", x);
+		fprintf(fp,"%.9e\n", x);
 		z = Shrage(z);
 	}
 	fclose(fp);
@@ -43,7 +43,7 @@ int LFunToDat(int seed,double m, char* name, int N)
 	{
 		xi = (double)z / M;
 		x =m* tan(M_PI * (xi - 0.5));
-		fprintf(fp, "%.9e", x);
+		fprintf(fp, "%.9e\n", x);
 		z = Shrage(z);
 	}
 	fclose(fp);
