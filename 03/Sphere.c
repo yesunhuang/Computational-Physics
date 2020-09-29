@@ -25,7 +25,7 @@ int SRandNToDat(int seed, double rho, int N, char* name)
 		y = 2.0 * rho * sqrt(nXi_2 - pow(nXi_2, 2.0)) * sin(2.0 * M_PI * nXi_1);
 		z = rho * (2.0 * nXi_2 - 1.0);
 		fprintf(fp, "%.9e\t%.9e\t%.9e\n", x, y, z);
-		xi_1 = Shrage(xi_1);
+		xi_1 = Shrage(xi_2);
 		xi_2 = Shrage(xi_1);
 	}
 	fclose(fp);
@@ -50,7 +50,7 @@ int NSRandNToDat(int seed, double rho, int N, char* name)
 	xi_3 = Shrage(xi_2);
 	for (i = 0; i < N; i++)
 	{
-		xi_1 = Shrage(xi_1);
+		xi_1 = Shrage(xi_3);
 		xi_2 = Shrage(xi_1);
 		xi_3 = Shrage(xi_2);
 		//น้ปฏ
