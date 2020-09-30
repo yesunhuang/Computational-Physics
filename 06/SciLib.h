@@ -34,7 +34,7 @@
  *
  * @ param{range}:[start,end]，二分范围，null为实数域
  *
- * @ param{rtol}:相对误差
+ * @ param{atol}:绝对误差
  *
  * @ 返回值: 反函数值,失败nan
  */
