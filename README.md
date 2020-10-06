@@ -4,4 +4,4 @@
 
 ## Please do not directly copy the homework. Thx.
 
-## Every homework is classified into a single folder which contains the source code and some of the data but not the pdf report.
+## Every homework is classified into a single folder which contains the source codes and some of the data but not the pdf reports.
