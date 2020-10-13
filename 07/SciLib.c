@@ -202,6 +202,7 @@ int CSamToDat(double (*Arcf)(double xi_1),int (*IsLegal)(double x,double xi_2),c
 	fprintf(fp, "x\tseed=%d\n",seed);
 	for (i = 0; i < N; i++)
 	{
+		count++;
 		//ËãËæ»úÁ¿
 		z1=Shrage(z2);
 		z2=Shrage(z1);
@@ -213,10 +214,14 @@ int CSamToDat(double (*Arcf)(double xi_1),int (*IsLegal)(double x,double xi_2),c
 		if (IsLegal(x,xi_2)==1)
 		{
 			fprintf(fp,"%.9e\n",x);
-			count++;
 		}
+		else
+		{
+			i--;
+		}
+		
 	}
-	fprintf(fp,"eta=%.9e\n",(double)count/(double)N);
+	fprintf(fp,"eta=%.9e\n",(double)N/(double)count);
 	fclose(fp);
 	return 1;
 }

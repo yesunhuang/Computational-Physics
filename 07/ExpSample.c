@@ -45,7 +45,7 @@ double ComArcf(double xi)
 {
     double x;
     //算反函数
-    if (xi>0.4285)
+    if (xi<0.4285)
     {
         x=219.3878702*xi+(double)2900;
     }

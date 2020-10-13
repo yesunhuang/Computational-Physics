@@ -15,7 +15,7 @@ int main(int argc, char const *argv[])
    //读数据，预运算
    double* SigmaP=ReadAndPreCal("data.TXT",Num);
    //直接抽样
-   DisDirectSamToDat(SigmaP,"data_direct.dat",Num,N);
+   //DisDirectSamToDat(SigmaP,"data_direct.dat",Num,N);
    //舍选抽样
    CSamToDat(ComArcf,ExpIsLegal,"data_com.dat",N);
    return 0;
