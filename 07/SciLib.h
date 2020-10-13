@@ -14,12 +14,13 @@
 
 #pragma region 头文件区
 #include "math.h"
+#include "Schrage16807.h"
 #pragma endregion
 
 #pragma region 宏定义区
  //以下为各类常数及操作符
 #define M_PI 3.14159265358979323846
-#define Epsilon 1.0E-6
+#define Epsilon 1.0E-9
 #pragma endregion
 
 #pragma region 函数声明
@@ -49,5 +50,37 @@ double ArcFun(double (*f)(double x), double fx,double* range, double atol);
  * @return {int}: 目标键值 
  */
 int BinarySearch(double* arr,double key,double len);
+
+/**
+ * @name: ConDirectSamToDat(double* SigmaPi,char* name,int N)
+ * @fuction: 对连续点直接抽样
+ * @param {(*Arcf)(double xi)}:反函数
+ * @param {name}:输出文件名
+ * @param {N}:抽样个数
+ * @return {int}:成功1，失败0 
+ */
+int ConDirectSamToDat(double (*Arcf)(double xi),char* name,int N);
+
+/**
+ * @name: DirectSamToDat(double* SigmaPi,char* name,int N)
+ * @fuction: 对离散点直接抽样
+ * @param {SigmaP}:预处理概率累加数组
+ * @param {name}:输出文件名
+ * @param {N}:抽样个数
+ * @param {M}:离散点个数
+ * @return {int}:成功1，失败0 
+ */
+int DisDirectSamToDat(double* SigmaP,char* name,int Num,int N);
+
+/**
+ * @name: CSamToDat(double (*Arcf)(double xi_1),int (*IsLegal)(double x,double xi_2),char* name,int N) 
+ * @fuction: 比较法抽样
+ * @param {(*Arcf)(double xi_1)}:比较函数的反函数指针
+ * @param {(*IsLegal)(double x,double xi_2)}:舍选函数
+ * @param {name}:输出文件名
+ * @param {N}:抽样个数
+ * @return {type} 
+ */
+int CSamToDat(double (*Arcf)(double xi_1),int (*IsLegal)(double x,double xi_2),char* name,int N);
 
 #pragma endregion

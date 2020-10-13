@@ -98,7 +98,7 @@ int BinarySearch(double* arr,double key,double len)
 	int start=0,end=len-1;
 	int mid=(start+end)/2;
 	//开始二分
-	while (end>start)
+	while (mid>start)
 	{
 		//C是向下取整的
 		if (arr[start]>arr[end])
@@ -129,3 +129,96 @@ int BinarySearch(double* arr,double key,double len)
 	return mid;
 	
 }
+
+int ConDirectSamToDat(double (*Arcf)(double xi),char* name,int N)
+{
+	FILE* fp;
+	if ((fp = fopen(name, "w")) == NULL)
+	{
+		return 0;
+		exit(0);
+	}
+	//防溢出处理
+	double M = M_16807,xi,x;
+	//迭代量
+	int seed=Seed();
+	int i = 0,z=seed;
+	//打印种子和表头
+	fprintf(fp, "x\tseed=%d\n",seed);
+	for (i = 0; i < N; i++)
+	{
+		z=Shrage(z);
+		xi=(double)z/M;
+		//算反函数
+		x=Arcf(xi);
+		fprintf(fp,"%.9e\n",x);
+	}
+	fclose(fp);
+	return 1;
+}
+
+int DisDirectSamToDat(double* SigmaP,char* name,int Num,int N)
+{
+	FILE* fp;
+	if ((fp = fopen(name, "w")) == NULL)
+	{
+		return 0;
+		exit(0);
+	}
+	//防溢出处理
+	double M = M_16807,xi;
+	//迭代量
+	int seed=Seed();
+	int i = 0,z=seed,x;
+	//打印种子和表头
+	fprintf(fp, "x\tseed=%d\n",seed);
+	for (i = 0; i < N; i++)
+	{
+		z=Shrage(z);
+		xi=(double)z/M;
+		//算抽样点
+		x=BinarySearch(SigmaP,xi,Num);
+		fprintf(fp,"%d\n",x);
+	}
+	fclose(fp);
+	return 1;
+}
+
+int CSamToDat(double (*Arcf)(double xi_1),int (*IsLegal)(double x,double xi_2),char* name,int N)
+{
+	FILE* fp;
+	if ((fp = fopen(name, "w")) == NULL)
+	{
+		return 0;
+		exit(0);
+	}
+	//防溢出处理
+	double M = M_16807,xi_1,xi_2,x;
+	//迭代量
+	int seed=Seed();
+	int i = 0,z1=seed,count=0;
+	int z2=Shrage(z1);
+	//打印种子和表头
+	fprintf(fp, "x\tseed=%d\n",seed);
+	for (i = 0; i < N; i++)
+	{
+		//算随机量
+		z1=Shrage(z2);
+		z2=Shrage(z1);
+		xi_1=(double)z1/M;
+		xi_2=(double)z2/M;
+		//算抽样点
+		x=Arcf(xi_1);
+		//判断是否合法
+		if (IsLegal(x,xi_2)==1)
+		{
+			fprintf(fp,"%.9e\n",x);
+			count++;
+		}
+	}
+	fprintf(fp,"eta=%.9e\n",(double)count/(double)N);
+	fclose(fp);
+	return 1;
+}
+
+
