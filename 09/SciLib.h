@@ -34,6 +34,32 @@
 
 #pragma region 函数声明
 /**
+ * @name: Factorial(int n)
+ * @fuction: 求阶乘
+ * @param {n}: 阶乘值数 
+ * @return {int}: 阶乘值 
+ */
+int Factorial(int n);
+
+/**
+ * @name: Permu(int n,int k)
+ * @fuction: 求排列数
+ * @param {n}: 物件数
+ * @param {k}: 要求排列个数 
+ * @return {int}: 排列数
+ */
+int Permu(int n,int k);
+
+/**
+ * @name: Combin(int n,int k)
+ * @fuction: 求组合数
+ * @param {n}: 物件数
+ * @param {k}: 要求组合个数 
+ * @return {int}: 组合数
+ */
+int Combin(int n,int k);
+
+/**
  * @ 函数: int Schrage(int seed)
  *
  * @ 功能: Schrage生产随机数
@@ -180,8 +206,8 @@ double* ConDirectSam(double (*Arcf)(double xi),int N,int seed);
  * @fuction: 对离散点直接抽样
  * @param {SigmaP}:预处理概率累加数组
  * @param {name}:输出文件名
- * @param {Num}:抽样个数
- * @param {N}:离散点个数
+ * @param {Num}:离散点个数
+ * @param {N}:抽样个数
  * @return {int}:成功1，失败0 
  */
 int DisDirectSamToDat(double* SigmaP,char* name,int Num,int N);
@@ -190,8 +216,8 @@ int DisDirectSamToDat(double* SigmaP,char* name,int Num,int N);
  * @name: DirectSamToDat(double* SigmaPi,int N)
  * @fuction: 对离散点直接抽样
  * @param {SigmaP}:预处理概率累加数组
+ * @param {Num}:离散点个数
  * @param {N}:抽样个数
- * @param {M}:离散点个数
  * @return {int*}:包含抽样的数组，记得free 
  */
 int* DisDirectSam(double* SigmaP,int Num,int N,int seed);

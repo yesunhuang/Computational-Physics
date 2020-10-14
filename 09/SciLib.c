@@ -1,4 +1,32 @@
 #include "SciLib.h"
+
+int Factorial(int n)
+{
+	//递归法
+	if (n>0)
+	{
+		return Factorial(n-1)*n;
+	}
+	else
+	{
+		return 1;
+	}
+	
+	
+}
+
+int Permu(int n,int k)
+{
+	//求排列数
+	return Factorial(n)/Factorial(n-k);
+}
+
+int Combin(int n,int k)
+{
+	//求排列数
+	return Permu(n,k)/Factorial(k);
+}
+
 int Schrage(int seed)
 {
 	//错误返回-1
@@ -249,8 +277,32 @@ int BinarySearch(double* arr,double key,double len)
 {
 	int start=0,end=len-1;
 	int mid=(start+end)/2;
+	//边值判断
+	if (arr[start]<arr[end])
+	{
+		if (key<arr[start])
+		{
+			return start;
+		}
+		if (key>arr[end])
+		{
+			return end+1;
+		}
+	}
+	else
+	{
+		if (key>arr[start])
+		{
+			return start;
+		}
+		if (key<arr[end])
+		{
+			return end+1;
+		}
+	}
+	
 	//开始二分
-	while (mid>start)
+	while (end>start+1)
 	{
 		//C是向下取整的
 		if (arr[start]>arr[end])
@@ -278,7 +330,7 @@ int BinarySearch(double* arr,double key,double len)
 		mid = (start + end) / 2;
 	}
 	//返回位置值
-	return mid;
+	return end;
 	
 }
 

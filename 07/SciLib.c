@@ -97,8 +97,17 @@ int BinarySearch(double* arr,double key,double len)
 {
 	int start=0,end=len-1;
 	int mid=(start+end)/2;
+	//边值判断
+	if (key<arr[start])
+	{
+		return start;
+	}
+	if (key>arr[end])
+	{
+		return end+1;
+	}
 	//开始二分
-	while (mid>start)
+	while (end>start+1)
 	{
 		//C是向下取整的
 		if (arr[start]>arr[end])
@@ -126,8 +135,7 @@ int BinarySearch(double* arr,double key,double len)
 		mid = (start + end) / 2;
 	}
 	//返回位置值
-	return mid;
-	
+	return end;
 }
 
 int ConDirectSamToDat(double (*Arcf)(double xi),char* name,int N)
