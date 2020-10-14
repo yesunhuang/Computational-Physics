@@ -94,6 +94,6 @@ int CSamToDat(double (*Arcf)(double xi_1),int (*IsLegal)(double x,double xi_2),c
  * @param {seed}: 种子
  * @return {double*}: {积分值,抽样效率} 
  */
-double* MonteInt(double (*f)(double* x_vec),int dim,double** range,int (*InArea)(double* x_vec),int N,int seed);
+double* MonteInt(double (*f)(double* x_vec),int dim,double (*range)[2],int (*InArea)(double* x_vec),int N,int seed);
 
 #pragma endregion

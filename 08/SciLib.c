@@ -226,7 +226,7 @@ int CSamToDat(double (*Arcf)(double xi_1),int (*IsLegal)(double x,double xi_2),c
 	return 1;
 }
 
-double* MonteInt(double (*f)(double* x_vec),int dim,double** range,int (*InArea)(double* x_vec),int N,int seed)
+double* MonteInt(double (*f)(double* x_vec),int dim,double (*range)[2],int (*InArea)(double* x_vec),int N,int seed)
 {
 	//创建缓存
 	int* z_vec=(int*)malloc(dim*sizeof(int));
@@ -272,7 +272,7 @@ double* MonteInt(double (*f)(double* x_vec),int dim,double** range,int (*InArea)
 	//计算效率
 	result[1]=(double)N/(double)count;
 	//计算积分结果(要考虑有效体积)
-	result[0]=sum/(double)count;
+	result[0]=sum/(double)count*V;
 	free(x_vec);
 	free(z_vec);
 	free(lrange);
