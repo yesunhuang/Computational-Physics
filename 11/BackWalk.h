@@ -54,4 +54,25 @@ int FindTheoP(char*name,int N,int d);
  * @return {int}:成功1，失败0
  */
 int CalOrder(char* inName,char* outName,int m,int i);
+
+/**
+ * @name: findLinIndex(int* index,int d,int N)
+ * @fuction: 把多维索引转化为线性
+ * @param {index}:索引数组
+ * @param {valueArray}:值数组
+ * @param {d}:维度
+ * @param {N}:步数
+ * @return {int}:线性索引
+ */
+int findLinIndex(int* index,int d,int N);
+
+/**
+ * @name: findDIndex(int index,int d,int N)
+ * @fuction: 把线性索引转化为多维
+ * @param {index}:索引数组
+ * @param {d}:维度
+ * @param {N}:步数
+ * @return {int*}:多维索引
+ */
+int* findDIndex(int index,int d ,int N);
 #pragma endregion
