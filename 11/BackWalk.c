@@ -100,7 +100,6 @@ int FindTheoP(char*name,int N,int d)
     //遍历点
     for ( i = 0; i < N; i++)
     {
-        fprintf(fp,"%d\t",(i+1));
         if (i==0)
         {
             pValue_old[0]=1;
@@ -135,7 +134,7 @@ int FindTheoP(char*name,int N,int d)
             pValue_old[j]=pValue[j];
         }
         if ((i+1) % 2==0)
-            fprintf(fp,"%d\t%.9e\n",j+1,pValue[0]);
+            fprintf(fp,"%d\t%.9e\n",i+1,pValue[0]);
     }    
     fclose(fp);
     return 1;
