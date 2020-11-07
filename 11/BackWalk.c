@@ -29,10 +29,12 @@ int EstimateBWP(int seed,char* name,int d,int N,int maxStep)
         reach=0;
         for ( i = 0; i < N; i++)
         {
+            /*
             if (r[i][0]==1)
             {
                 continue;
             }
+            */
             z=Schrage(z);
             xi=(double)z/M;
             if (xi<0.5)
@@ -98,8 +100,10 @@ int FindTheoP(char*name,int N,int d)
     }
     int* r;
     //遍历点
+    pValue_old[0]=1;
     for ( i = 0; i < N; i++)
     {
+        /*
         if (i==0)
         {
             pValue_old[0]=1;
@@ -108,7 +112,7 @@ int FindTheoP(char*name,int N,int d)
         {
             pValue_old[0]=0;
         }
-        
+        */
         //更新值(注意这个程序完全没有优化，完全没有效率)
         for ( j = 0; j < (int)pow(N+1,d); j++)
         {
@@ -129,7 +133,7 @@ int FindTheoP(char*name,int N,int d)
             free(r);
         }
         //复制旧数组
-        for ( j = 1; j < (int)pow(N+1,d); j++)
+        for ( j = 0; j < (int)pow(N+1,d); j++)
         {
             pValue_old[j]=pValue[j];
         }
