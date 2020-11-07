@@ -4,7 +4,7 @@ int main(int argc, char const *argv[])
 {
     int seed=Seed();
     //请勿把M调太高，原因参看理论计算的实现，100就会炸
-    int N=100000,M=40,i=4;
+    int N=1000000,M=40,i=2;
     
     //一维
     EstimateBWP(seed,"exp1.dat",1,N,M*4);

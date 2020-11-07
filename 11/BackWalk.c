@@ -29,7 +29,7 @@ int EstimateBWP(int seed,char* name,int d,int N,int maxStep)
         reach=0;
         for ( i = 0; i < N; i++)
         {
-            /*
+            /*到点终止用代码块
             if (r[i][0]==1)
             {
                 continue;
@@ -67,7 +67,8 @@ int EstimateBWP(int seed,char* name,int d,int N,int maxStep)
         if ((j+1)%2==0)
             fprintf(fp,"%d\t%.9e\n",j+1,(double)reach/(double)N);
     }
-    fprintf(fp,"%d\n",totalReach);
+    //到点终止用代码块
+    //fprintf(fp,"%d\n",totalReach);
     fclose(fp);
     //释放缓存
     for (i = 0; i < N; i++)
@@ -103,7 +104,7 @@ int FindTheoP(char*name,int N,int d)
     pValue_old[0]=1;
     for ( i = 0; i < N; i++)
     {
-        /*
+        /*到点终止用代码块
         if (i==0)
         {
             pValue_old[0]=1;
@@ -172,7 +173,7 @@ int CalOrder(char* inName,char* outName,int m,int i)
 	}
     for ( j = i+1; j < m-i; j++)
     {
-        nu=log(cache[j+i]/cache[j-i])/log((double)(j+i)/(double)(j-i));
+        nu=-log(cache[j+i]/cache[j-i])/log((double)(j+i)/(double)(j-i));
         fprintf(fp,"%d\t%.9e\n",j,nu);
     }
     fclose(fp);
