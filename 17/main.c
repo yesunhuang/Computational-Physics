@@ -2,6 +2,7 @@
 
 int main(int argc, char const *argv[])
 {
+    
     //文件名
     char name1[]="chaosXL.dat",name2[]="chaosLamL.dat";
     char** name=(char **)malloc(2*sizeof(char*));
@@ -14,7 +15,8 @@ int main(int argc, char const *argv[])
     //lambda数组
     double* lambda=(double *)malloc(n*sizeof(double));
 
-    //初始化lambda数组
+    
+    //初始化lambda数组,Large
     for ( i = 0; i < n; i++)
     {
         lambda[i]=0+(double)i*step;
@@ -36,6 +38,21 @@ int main(int argc, char const *argv[])
     
     chaosToDat(name,lambda,n,M,N,RE);
     
+
+    //more lambda
+    char name5[]="chaosXMore.dat",name6[]="chaosLamMore.dat";
+    name[0]=name5;name[1]=name6;
+
+    step=(double)0.2/(double)n;
+
+    //初始化lambda数组
+    for ( i = 0; i < n; i++)
+    {
+        lambda[i]=0.7+(double)i*step;
+    }
+    
+    chaosToDat(name,lambda,n,M,N,RE);
+
     
 
     return 0;
